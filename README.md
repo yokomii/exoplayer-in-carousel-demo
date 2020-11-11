@@ -1,1 +1,1 @@
-# ExoPlayer on carousel demo
+# ExoPlayer in carousel demo
