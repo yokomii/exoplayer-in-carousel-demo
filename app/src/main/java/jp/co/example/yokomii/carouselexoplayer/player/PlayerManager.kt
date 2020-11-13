@@ -25,19 +25,17 @@ class PlayerManager(private val context: Context) {
         player.play()
     }
 
-    fun getPlayer(mediaData: MediaData): SimpleExoPlayer {
-        return cache[mediaData]
-            ?: createPlayer()
-                .also {
-                    it.prepareMedia(mediaData)
-                    cache[mediaData] = it
+    fun getPlayer(mediaData: MediaData) = cache[mediaData]
+        ?: createPlayer()
+            .also {
+                it.prepareMedia(mediaData)
+                cache[mediaData] = it
+            }
+            .also {
+                if (currentMedia == mediaData && !it.isPlaying) {
+                    it.play()
                 }
-                .also {
-                    if (currentMedia == mediaData && !it.isPlaying) {
-                        it.play()
-                    }
-                }
-    }
+            }
 
     private fun createPlayer(): SimpleExoPlayer {
         return SimpleExoPlayer.Builder(context)

@@ -12,29 +12,29 @@ import jp.co.example.yokomii.carouselexoplayer.player.PlayerManager
 class PlayerCarouselAdapter(
     private val playerManager: PlayerManager,
     private val medias: List<MediaData>,
-) : RecyclerView.Adapter<PlayerCarouselAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<PlayerCarouselAdapter.PlayerViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlayerViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.list_item_exo_player, parent, false)
-        return ViewHolder(
+        return PlayerViewHolder(
             view,
             playerManager,
         )
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PlayerViewHolder, position: Int) {
         holder.onBind(medias[position])
     }
 
-    override fun onViewRecycled(holder: ViewHolder) {
+    override fun onViewRecycled(holder: PlayerViewHolder) {
         super.onViewRecycled(holder)
         holder.onRecycled()
     }
 
     override fun getItemCount() = medias.size
 
-    class ViewHolder(
+    class PlayerViewHolder(
         private val view: View,
         private val playerManager: PlayerManager,
     ) : RecyclerView.ViewHolder(view) {
