@@ -14,11 +14,11 @@ class MainActivity : AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.adapter = RecyclerAdapter(
             this,
-            createMedias(),
+            createMediaList(),
         )
     }
 
-    private fun createMedias() = (0L until 100).map {
+    private fun createMediaList() = (0L until 100).map {
         MediaData(
             id = it,
             mediaUrl = "https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_fmp4/master.m3u8",

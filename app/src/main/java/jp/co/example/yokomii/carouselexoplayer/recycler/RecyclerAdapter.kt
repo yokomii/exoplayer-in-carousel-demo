@@ -11,7 +11,7 @@ import jp.co.example.yokomii.carouselexoplayer.recycler.caroucel.player.PlayerCa
 
 class RecyclerAdapter(
     private val lifecycleOwner: LifecycleOwner,
-    private val medias: List<MediaData>,
+    private val mediaList: List<MediaData>,
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private enum class ListItems {
@@ -32,7 +32,7 @@ class RecyclerAdapter(
         return when (ListItems.values()[viewType]) {
             ListItems.PLAYER_CAROUSEL -> PlayerCarouselViewHolder(
                 view,
-                medias,
+                mediaList,
                 lifecycleOwner,
             )
             else -> DummyCarouselViewHolder(view)

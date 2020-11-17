@@ -15,7 +15,7 @@ import jp.co.example.yokomii.carouselexoplayer.player.PlayerManager
 
 class PlayerCarouselViewHolder(
     view: View,
-    private val medias: List<MediaData>,
+    private val mediaList: List<MediaData>,
     private val lifecycleOwner: LifecycleOwner,
 ) : RecyclerView.ViewHolder(view),
     LifecycleObserver {
@@ -37,7 +37,7 @@ class PlayerCarouselViewHolder(
 
     private val adapter = PlayerCarouselAdapter(
         playerManager,
-        medias,
+        mediaList,
     )
 
     private val onScrolledListener = object : RecyclerView.OnScrollListener() {
@@ -51,7 +51,7 @@ class PlayerCarouselViewHolder(
 
                     if (position != currentPosition) {
                         currentPosition = position
-                        playerManager.onCurrentMediaChanged(medias[position])
+                        playerManager.onCurrentMediaChanged(mediaList[position])
                     }
                 }
             }
@@ -98,7 +98,7 @@ class PlayerCarouselViewHolder(
         val isVisibleToUser = isViewAttached && isVisibleParent
         when {
             isVisibleToUser -> {
-                playerManager.onCurrentMediaChanged(medias[currentPosition])
+                playerManager.onCurrentMediaChanged(mediaList[currentPosition])
                 adapter.notifyDataSetChanged()
             }
             else -> {
